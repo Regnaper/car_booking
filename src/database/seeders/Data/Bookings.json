@@ -1,0 +1,38 @@
+[
+    {
+        "carPlate": "c000cc99",
+        "userName": "Михайлов Михаил Михайлович",
+        "start_booking_at": "PT2H",
+        "end_booking_at": "PT4H"
+    },
+    {
+        "carPlate": "c333cc99",
+        "userName": "Станиславский Станислав Станиславович",
+        "start_booking_at": "PT2H",
+        "end_booking_at": "PT4H"
+    },
+    {
+        "carPlate": "c222cc99",
+        "userName": "Васильев Василий Васильевич",
+        "start_booking_at": "PT2H",
+        "end_booking_at": "PT4H"
+    },
+    {
+        "carPlate": "c333cc99",
+        "userName": "Александрова Александра Александровна",
+        "start_booking_at": "PT5H",
+        "end_booking_at": "PT8H"
+    },
+    {
+        "carPlate": "c888cc99",
+        "userName": "Евгеньева Евгения Евгеньевна",
+        "start_booking_at": "PT4H",
+        "end_booking_at": "PT6H"
+    },
+    {
+        "carPlate": "c999cc99",
+        "userName": "Володин Владимир Владимирович",
+        "start_booking_at": "PT5H",
+        "end_booking_at": "PT8H"
+    }
+]

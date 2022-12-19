@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Kia Rio",
+        "comfortCategoryName": "Категория 1"
+    },
+    {
+        "name": "Volkswagen Polo",
+        "comfortCategoryName": "Категория 1"
+    },
+    {
+        "name": "Hyundai Solaris",
+        "comfortCategoryName": "Категория 1"
+    },
+    {
+        "name": "Toyota Camry",
+        "comfortCategoryName": "Категория 2"
+    },
+    {
+        "name": "Skoda Octavia",
+        "comfortCategoryName": "Категория 2"
+    },
+    {
+        "name": "Ford Mondeo",
+        "comfortCategoryName": "Категория 2"
+    },
+    {
+        "name": "Audi A8",
+        "comfortCategoryName": "Категория 3"
+    }
+]

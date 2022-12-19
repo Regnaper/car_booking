@@ -1,0 +1,52 @@
+[
+    {
+        "plate": "c000cc99",
+        "carModelName": "Kia Rio",
+        "driverName": "Иванов Иван Иванович"
+    },
+    {
+        "plate": "c111cc99",
+        "carModelName": "Kia Rio",
+        "driverName": "Петров Петр Петрович"
+    },
+    {
+        "plate": "c222cc99",
+        "carModelName": "Volkswagen Polo",
+        "driverName": "Сергеев Сергей Сергеевич"
+    },
+    {
+        "plate": "c333cc99",
+        "carModelName": "Volkswagen Polo",
+        "driverName": "Алексеев Алексей Алексеевич"
+    },
+    {
+        "plate": "c444cc99",
+        "carModelName": "Hyundai Solaris",
+        "driverName": "Дмитриев Дмитрий Дмитриевич"
+    },
+    {
+        "plate": "c555cc99",
+        "carModelName": "Hyundai Solaris",
+        "driverName": "Александров Александр Александрович"
+    },
+    {
+        "plate": "c666cc99",
+        "carModelName": "Toyota Camry",
+        "driverName": "Глебов Глеб Глебович"
+    },
+    {
+        "plate": "c777cc99",
+        "carModelName": "Skoda Octavia",
+        "driverName": "Игоренко Игорь Игоревич"
+    },
+    {
+        "plate": "c888cc99",
+        "carModelName": "Ford Mondeo",
+        "driverName": "Асланов Аслан Асланович"
+    },
+    {
+        "plate": "c999cc99",
+        "carModelName": "Audi A8",
+        "driverName": "Русланов Руслан Русланович"
+    }
+]
