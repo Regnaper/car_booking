@@ -1,0 +1,4 @@
+/nginx
+/src/.env
+/src/vendor
+/logs

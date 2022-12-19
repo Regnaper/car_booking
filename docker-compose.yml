@@ -1,0 +1,49 @@
+version: '3.8'
+
+networks:
+  laravel:
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./logs/nginx:/var/log/nginx
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./src:/var/www
+    depends_on:
+      - php
+      - mysql
+    networks:
+      - laravel
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: mysql
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - "4306:3306"
+    environment:
+      MYSQL_DATABASE: test_db_user
+      MYSQL_ROOT_PASSWORD: test_db_password
+      SERVICE_TAG: dev
+      SERVICE_NAME: mysql
+    networks:
+      - laravel
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /var/www
+    container_name: php
+    volumes:
+      - ./src:/var/www
+    ports:
+      - "9000:9000"
+    networks:
+      - laravel
