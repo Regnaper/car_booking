@@ -21,15 +21,12 @@ class BookingController extends Controller
         $startHours = (int)$request->get('start');
         $endHours = (int)$request->get('end');
 
-        if ($startHours && $endHours) {
+        if (($startHours && $endHours) || ($startHours >= $endHours)) {
+
             $startDate->add(new \DateInterval("PT{$startHours}H"));
             $endDate->add(new \DateInterval("PT{$endHours}H"));
 
             $collection = Car::with(['model', 'model.comfortCategory'])
-                ->whereHas('bookers', fn(Builder $query) =>
-                    $query->where('start_booking_at', '>=', $endDate)
-                        ->orWhere('end_booking_at', '<=', $startDate)
-                )
                 ->whereHas('model', fn(Builder $query) =>
                     $query->whereHas('comfortCategory', fn(Builder $query) =>
                         $query->whereHas('posts', fn(Builder $query) =>
@@ -39,20 +36,38 @@ class BookingController extends Controller
                         )
                     )
                 )
-                ->when(!empty($modelName), fn(Builder $query) =>
+                ->when(!empty($modelName) || !empty($comfortCategory), fn(Builder $query) =>
                     $query->whereHas('model', fn(Builder $query) =>
-                        $query->where('name', $modelName)
-                            ->when(!empty($comfortCategory), fn(Builder $query) =>
-                                $query->whereHas('comfortCategory', fn(Builder $query) =>
-                                    $query->where('name', $comfortCategory)
-                                )
+                        $query->when(!empty($comfortCategory), fn(Builder $query) =>
+                            $query->where('name', $modelName)
+                        )
+                        ->when(!empty($comfortCategory), fn(Builder $query) =>
+                            $query->whereHas('comfortCategory', fn(Builder $query) =>
+                                $query->where('name', $comfortCategory)
                             )
+                        )
+                    )
+                )
+                ->whereDoesntHave('bookers', fn(Builder $query) =>
+                    $query->where(fn(Builder $query) =>
+                        $query->where('start_booking_at', '<=', $startDate)
+                            ->where('end_booking_at', '>', $startDate)
+                    )
+                    ->orWhere(fn(Builder $query) =>
+                        $query->where('start_booking_at', '<', $endDate)
+                            ->where('end_booking_at', '>=', $endDate)
+                        )
+                    ->orWhere(fn(Builder $query) =>
+                        $query->where('start_booking_at', '>=', $startDate)
+                            ->where('end_booking_at', '<=', $endDate)
                     )
                 )
                 ->get();
 
             return JsonResource::collection($collection);
+
         } else {
+
             return new JsonResource(['error' => 'empty start/end interval']);
         }
     }
